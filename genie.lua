@@ -21,14 +21,21 @@ PROJ_DIR = path.getabsolute("..")
 
         configuration "Debug"
             targetdir "bin/debug"
+            flags {"Unicode"}
             defines {"_DEBUG"}
 
         configuration "Release"
+            flags {"Unicode"}
             targetdir "bin/release"
 
         configuration "vs*"
             flags { "Unicode", "Winmain"}
-            defines {"WIN32"}
+            defines {"_WIN32"}
+
+        configuration "gmake"
+            flags {"Unicode"}
+            defines{"_LINUX"}
+
 
         files{
             "main.cpp"
