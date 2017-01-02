@@ -16,7 +16,7 @@ solution "PlatformDevelopment_FileSystem"
 
 PROJ_DIR = path.getabsolute("..")
 
-    project "PlatformDevelopment_FileSystem"
+    project "PlatDev_FileSystem"
         kind "ConsoleApp"
 
         configuration "Debug"
@@ -33,6 +33,7 @@ PROJ_DIR = path.getabsolute("..")
             defines {"_WIN32"}
 
         configuration "gmake"
+            targetdir "bin/debug"
             flags {"Unicode"}
             defines{"_LINUX"}
 
