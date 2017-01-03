@@ -39,7 +39,9 @@ PROJ_DIR = path.getabsolute("..")
 
 
         files{
-            "main.cpp"
+            "*.cpp",
+            "*.hpp",
+            "*.h",
         }
 
         language "C++"
