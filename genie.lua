@@ -21,6 +21,7 @@ PROJ_DIR = path.getabsolute("..")
 
         configuration "Debug"
             targetdir "bin/debug"
+            objdir "obj/debug"
             flags {"Unicode"}
             defines {"_DEBUG"}
 
@@ -29,11 +30,12 @@ PROJ_DIR = path.getabsolute("..")
             targetdir "bin/release"
 
         configuration "vs*"
-            flags { "Unicode", "Winmain"}
-            defines {"PLATFORM_WIN"}
+            flags { "Unicode", "Winmain","NoIncrementalLink"}
+            defines {"PLATFORM_WIN", "WIN32"}
 
         configuration "gmake"
             targetdir "bin/debug"
+            objdir "obj/debug"
             flags {"Unicode"}
             defines{"PLATFORM_LINUX"}
 
