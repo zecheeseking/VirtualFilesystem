@@ -1,4 +1,4 @@
-solution "PlatformDevelopment_FileSystem"
+solution "PlatDev_FileSystem"
     configurations{
       "Debug",
       "Release",
