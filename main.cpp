@@ -2,7 +2,9 @@
 
 int main()
 {
-    std::cout << "Hello!\n";
+    FileSystem fs;
+
+    fs.Test();
 
     std::cin.get();
 }
