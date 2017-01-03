@@ -30,12 +30,12 @@ PROJ_DIR = path.getabsolute("..")
 
         configuration "vs*"
             flags { "Unicode", "Winmain"}
-            defines {"_WIN32"}
+            defines {"PLATFORM_WIN"}
 
         configuration "gmake"
             targetdir "bin/debug"
             flags {"Unicode"}
-            defines{"_LINUX"}
+            defines{"PLATFORM_LINUX"}
 
 
         files{
