@@ -36,6 +36,7 @@ PROJ_DIR = path.getabsolute("..")
             flags {"Unicode"}
             defines{"PLATFORM_LINUX"}
 
+            --This is needed as "configuration {}" allows defining of settings for all configurations. Like files!
         configuration {}
 
             files{
