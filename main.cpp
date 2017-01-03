@@ -1,11 +1,10 @@
 #include <iostream>
+
 #include "FileSystem.h"
 
 int main()
 {
-    FileSystem fs;
-
-    fs.Test();
+    std::cout << "Narf!\n";
 
     std::cin.get();
 }
