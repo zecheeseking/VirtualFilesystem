@@ -2,10 +2,10 @@
 
 #include <iostream>
 
-public FileSystem::FileSystem() {}
+FileSystem::FileSystem() {}
 
-public FileSystem::~FileSystem() {}
+FileSystem::~FileSystem() {}
 
-public void FileSystem::Test() {
+void FileSystem::Test() {
     std::cout << "Hello, I'm windows!\n";
 }
