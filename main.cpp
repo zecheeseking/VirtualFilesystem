@@ -4,7 +4,9 @@
 
 int main()
 {
-    std::cout << "Narf!\n";
+    FileSystem fs;
+
+    fs.Test();
 
     std::cin.get();
 }
