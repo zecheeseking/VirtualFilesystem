@@ -21,16 +21,13 @@ PROJ_DIR = path.getabsolute("..")
 
         configuration "Debug"
             targetdir "bin/debug"
-            objdir "obj/debug"
-            flags {"Unicode"}
             defines {"_DEBUG"}
 
         configuration "Release"
-            flags {"Unicode"}
             targetdir "bin/release"
 
         configuration "vs*"
-            flags { "Unicode", "Winmain","NoIncrementalLink"}
+            flags { "Unicode", "Winmain"}
             defines {"PLATFORM_WIN", "WIN32"}
 
         configuration "gmake"
@@ -39,11 +36,12 @@ PROJ_DIR = path.getabsolute("..")
             flags {"Unicode"}
             defines{"PLATFORM_LINUX"}
 
+        configuration {}
 
-        files{
-            "*.cpp",
-            "*.hpp",
-            "*.h",
-        }
+            files{
+                "*.cpp",
+                "*.hpp",
+                "*.h"
+            }
 
         language "C++"
