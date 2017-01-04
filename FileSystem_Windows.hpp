@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <windows.h>
+#include <memory>
 
 FileSystem::FileSystem() {}
 
@@ -12,7 +13,6 @@ void FileSystem::Test() {}
 void FileSystem::MountDirectory(const std::string & directory) {
     WIN32_FIND_DATAA find_data;
 
-    	//CHECK DIRECTORY EXISTS.
     	auto filePath = directory.substr(0,directory.size() - 1);
     	HANDLE handle = FindFirstFileA(filePath.c_str(), &find_data);
 
@@ -47,22 +47,26 @@ void FileSystem::MountDirectory(const std::string & directory) {
     				continue;
     			}
     			else
-    				m_Files.push_back(find_data.cFileName);
+    				m_Files.push_back(directory + find_data.cFileName);
     		}
     	}while (FindNextFileA(handle, &find_data) != 0);
 
     	FindClose(handle);
 }
 
-//std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const {
-//    std::cout << "Windows GetPhysicalFilePath implementation needed!\n";
-//    return nullptr;
-//}
-//
-//void FileSystem::GetFilesInDirectory(std::vector<std::string>& fileTable, const std::string & directory) {
-//    std::cout << "Windows GetFilesInDirectory implementation needed!\n";
-//}
-//
-//void FileSystem::GetFilesWithExtension(std::vector<std::string>& fileTable, const std::string & extension) {
-//    std::cout << "Windows GetFilesWithExtension implementation needed!\n";
-//}
+std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const {
+   std::cout << "Windows GetPhysicalFilePath implementation needed!\n";
+   return nullptr;
+}
+
+void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const {
+    for (const File & f : m_Files)
+	{
+		if (f.mPhysicalPath.find(directory) != std::string::npos)
+			fileTable.push_back(f.mPhysicalPath);
+	}
+}
+
+void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension)const {
+   std::cout << "Windows GetFilesWithExtension implementation needed!\n";
+}
