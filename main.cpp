@@ -9,8 +9,15 @@ int main()
 
     std::cout << "Enter mount path: \n";
 
-	fs.Test();
-	std::string dir = "directory";
+    std::string dir = "";
+
+    #if defined(PLATFORM_WIN) && defined(_DEBUG)
+        dir = "D:\\Users\\Christopher\\Pictures\\Work\\";
+    #elif defined(PLATFORM_LINUX) && defined(_DEBUG)
+        dir = "/home/chris/Documents/Test/";
+    #else
+        std::cin.get() >> dir;
+
     fs.MountDirectory(dir);
 
     std::cin.get();
