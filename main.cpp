@@ -16,8 +16,8 @@ int main()
     #elif defined(PLATFORM_LINUX) && defined(_DEBUG)
         dir = "/home/chris/Documents/Test/";
     #else
-        std::cin.get() >> dir;
-
+        std::cin >> dir;
+	#endif
     fs.MountDirectory(dir);
 
     std::cin.get();
