@@ -26,3 +26,8 @@ void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::st
 void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension)const {
    std::cout << "Linux MountDirectory implementation needed!\n";
 }
+
+void FileSystem::LogAllFiles() const
+{
+    std::cout << "Linux MountDirectory implementation needed!\n";
+};

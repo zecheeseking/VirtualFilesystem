@@ -2,6 +2,7 @@
 
 #include "FileMode.h"
 #include <string>
+#include <stdint.h>
 #include <vector>
 
 class File

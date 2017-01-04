@@ -33,6 +33,7 @@ PROJ_DIR = path.getabsolute("..")
             defines {"PLATFORM_WIN", "WIN32"}
 
         configuration "gmake"
+            buildoptions {"-std=C++11"}
             targetdir "bin/debug"
             objdir "obj/debug"
             flags {"Unicode"}

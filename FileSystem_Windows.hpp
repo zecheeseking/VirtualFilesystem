@@ -77,3 +77,9 @@ void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::
             fileTable.push_back(f.mPhysicalPath);
    }
 }
+
+void FileSystem::LogAllFiles() const
+{
+    for(auto s : m_Files)
+        std::cout << s.mPhysicalPath << std::endl;
+};

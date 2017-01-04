@@ -18,11 +18,7 @@ public:
     void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const;
     void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension) const;
 
-    void LogAllFiles() const
-    {
-        for(auto s : m_Files)
-            std::cout << s.mPhysicalPath << std::endl;
-    };
+    void LogAllFiles() const;
 
 private:
     std::vector<File> m_Files;
