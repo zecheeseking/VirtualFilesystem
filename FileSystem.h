@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class FileSystem
 {
 public:
@@ -7,4 +9,6 @@ public:
     ~FileSystem();
 
     void Test();
+
+	void MountDirectory(const std::string & directory);
 };

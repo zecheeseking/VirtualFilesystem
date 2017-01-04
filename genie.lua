@@ -21,7 +21,9 @@ PROJ_DIR = path.getabsolute("..")
 
         configuration "Debug"
             targetdir "bin/debug"
+            objdir "obj/debug"
             defines {"_DEBUG"}
+            flags {"Symbols"} -- This is required for Kernal32.lib dependency to allow for passing arguments. YAY.
 
         configuration "Release"
             targetdir "bin/release"
