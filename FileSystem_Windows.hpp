@@ -55,8 +55,11 @@ void FileSystem::MountDirectory(const std::string & directory) {
 }
 
 std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const {
-   std::cout << "Windows GetPhysicalFilePath implementation needed!\n";
-   return nullptr;
+	for (const File & f : m_Files)
+		if (f.mPhysicalPath.find(filename) != std::string::npos)
+			return f.mPhysicalPath;
+
+	return nullptr;
 }
 
 void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const {
@@ -68,5 +71,9 @@ void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::st
 }
 
 void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension)const {
-   std::cout << "Windows GetFilesWithExtension implementation needed!\n";
+   for(const File & f : m_Files)
+   {
+       if(f.mPhysicalPath.find(extension) != std::string::npos)
+            fileTable.push_back(f.mPhysicalPath);
+   }
 }
