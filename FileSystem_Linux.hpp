@@ -8,8 +8,6 @@ FileSystem::~FileSystem() {}
 
 void FileSystem::Test() {}
 
-void FileSystem::MountDirectory(const std::string & directory) { std::cout << "Mounting"; }
-
 void FileSystem::MountDirectory(const std::string & directory) {
     std::cout << "Linux MountDirectory implementation needed!\n";
 }
