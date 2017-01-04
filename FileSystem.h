@@ -13,7 +13,7 @@ public:
 
     void Test();
 
-	void MountDirectory(const std::string & directory);
+	  void MountDirectory(const std::string & directory);
     std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const;
     void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const;
     void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension) const;
@@ -23,6 +23,6 @@ public:
 private:
     std::vector<File> m_Files;
 
-    FileSystem(const FileSystem & fileSystem) = delete;
-    FileSystem& operator=(const FileSystem & fileSystem) = delete;
+    FileSystem(const FileSystem & fileSystem) {};
+    FileSystem& operator=(const FileSystem & fileSystem){};
 };
