@@ -18,7 +18,10 @@ int main()
     #else
         std::cin >> dir;
 	#endif
+
     fs.MountDirectory(dir);
+
+    fs.LogAllFiles();
 
     std::cin.get();
 }
