@@ -8,7 +8,7 @@ class File
 {
 public:
 	File(const std::string & physicalPath);
-	virtual ~File() = default;
+	virtual ~File();
 
 	bool Open(FileMode mode);
 	size_t Read(uint8_t*, size_t);
