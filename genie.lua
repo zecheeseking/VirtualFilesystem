@@ -33,11 +33,10 @@ PROJ_DIR = path.getabsolute("..")
             defines {"PLATFORM_WIN", "WIN32"}
 
         configuration "gmake"
-            linkoptions {"'-std=C++11'"}
             targetdir "bin/debug"
             objdir "obj/debug"
             flags {"Unicode"}
-            defines{"PLATFORM_LINUX"}
+            defines{"PLATFORM_LINUX", "CXX=g++ -std=c++11"}
 
             --This is needed as "configuration {}" allows defining of settings for all configurations. Like files!
         configuration {}

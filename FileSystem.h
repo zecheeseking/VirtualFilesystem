@@ -14,9 +14,9 @@ public:
     void Test();
 
 	  void MountDirectory(const std::string & directory);
-    std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const;
-    void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const;
-    void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension) const;
+    std::string GetPhysicalFilePath(const std::string & filename) const;
+    void GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const;
+    void GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension) const;
 
     void LogAllFiles() const;
 
