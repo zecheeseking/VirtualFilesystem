@@ -10,6 +10,7 @@ FileSystem::~FileSystem() {}
 void FileSystem::Test() {}
 
 void FileSystem::MountDirectory(const std::string & directory) {
+
     DIR * dir = opendir(directory.c_str());
 
     if(dir == nullptr)
@@ -17,7 +18,7 @@ void FileSystem::MountDirectory(const std::string & directory) {
 
     auto entity = readdir(dir);
 
-    while(entity)
+    while(entity != nullptr)
     {
         //Check if directory
         if(entity->d_type == DT_DIR)
