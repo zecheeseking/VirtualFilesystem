@@ -57,7 +57,7 @@ std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const 
 		if (f.mPhysicalPath.find(filename) != std::string::npos)
 			return f.mPhysicalPath;
 
-	return nullptr;
+	return "";
 }
 
 void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const {

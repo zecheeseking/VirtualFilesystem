@@ -42,16 +42,27 @@ void FileSystem::MountDirectory(const std::string & directory) {
 }
 
 std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const {
-   std::cout << "Linux GetPhysicalFilePath implementation needed!\n";
+    for (const File & f : m_Files)
+        if(f.mPhysicalPath.find(filename) != std::string::npos)
+            return f.mPhysicalPath;
+
    return "";
 }
 
 void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const {
-   std::cout << "Linux GetFilesInDirectory implementation needed!\n";
+    for (const File & f : m_Files)
+    {
+        if (f.mPhysicalPath.find(directory) != std::string::npos)
+            fileTable.push_back(f.mPhysicalPath);
+    }
 }
 
 void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension)const {
-   std::cout << "Linux GetFilesWithExtension implementation needed!\n";
+    for(const File & f : m_Files)
+    {
+        if(f.mPhysicalPath.find(extension) != std::string::npos)
+             fileTable.push_back(f.mPhysicalPath);
+    }
 }
 
 void FileSystem::LogAllFiles() const
