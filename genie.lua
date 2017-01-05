@@ -36,7 +36,7 @@ PROJ_DIR = path.getabsolute("..")
             targetdir "bin/debug"
             objdir "obj/debug"
             flags {"Unicode"}
-            defines{"PLATFORM_LINUX", "DEBUG"}
+            defines{"PLATFORM_LINUX", "CXX=g++ -std=c++11", "_DEBUG"}
 
             --This is needed as "configuration {}" allows defining of settings for all configurations. Like files!
         configuration {}
