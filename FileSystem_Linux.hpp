@@ -26,8 +26,8 @@ void FileSystem::MountDirectory(const std::string & directory) {
             {
                 continue;
             }
-            else
-                MountDirectory(directory + entity->d_name);
+            // else
+            //     MountDirectory(directory + entity->d_name);
         }
         //Else check if file.
         else if(entity->d_type == DT_REG)
