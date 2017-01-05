@@ -15,14 +15,14 @@ int main()
     #if defined(PLATFORM_WIN) && defined(_DEBUG)
         dir = "D:\\Users\\Christopher\\Pictures\\Work\\";
     #elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-        std::cout << "Linux > Debug\n";
         dir = "/home/chris/Documents/Test/";
     #else
         std::cin >> dir;
 	#endif
 
-    fs.MountDirectory(dir);
-	fs.LogAllFiles();
+  fs.MountDirectory(dir);
+  std::cout <<"finished mount.\n";
+  fs.LogAllFiles();
 
     std::vector<File> fileTable;
 	std::string dirSearch = "";

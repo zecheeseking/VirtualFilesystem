@@ -11,31 +11,33 @@ void FileSystem::Test() {}
 
 void FileSystem::MountDirectory(const std::string & directory) {
 
-    DIR * dir = opendir(directory.c_str());
+    std::cout << "Searching\n";
+    auto dir = opendir(directory.c_str());
 
-    if(dir == nullptr)
+    if(dir == NULL){
         std::cout << "Cannot process directory" << std::endl;
+		    return;
+	  }
 
     auto entity = readdir(dir);
 
-    while(entity != nullptr)
+    while(entity != NULL)
     {
         //Check if directory
         if(entity->d_type == DT_DIR)
         {
-            if(entity->d_name[0] == '.')
+            if(entity->d_name[0] != '.')
             {
-                continue;
+                //If here it's a valid path, recursively check the subdir
             }
-            // else
-            //     MountDirectory(directory + entity->d_name);
         }
         //Else check if file.
         else if(entity->d_type == DT_REG)
         {
             m_Files.push_back(directory + entity->d_name);
-            entity = readdir(dir);
         }
+
+        entity = readdir(dir);
     }
 
     closedir(dir);
