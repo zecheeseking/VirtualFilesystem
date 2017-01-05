@@ -29,7 +29,7 @@ int main()
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
 		dirSearch = "Test\\";
 	#elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-		dirSearch = "/home/chris/Documents/Test/";
+		dirSearch = "Happytimes/";
 	#else
 		std::cin >> dirSearch;
 	#endif
@@ -48,7 +48,7 @@ int main()
     #if defined(PLATFORM_WIN) && defined(_DEBUG)
     	extension = ".mp4";
     #elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-    	extension = "/home/chris/Documents/Test/";
+    	extension = ".txt";
     #else
     	std::cin >> extension;
     #endif
@@ -66,7 +66,7 @@ int main()
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
 		fileName = "test.txt";
 	#elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-		fileName = "/home/chris/Documents/Test/";
+		fileName = "TEST1.txt";
 	#else
 		std::cin >> fileName;
 	#endif

@@ -27,6 +27,7 @@ void FileSystem::MountDirectory(const std::string & directory) {
             if(entity->d_name[0] != '.')
             {
                 //If here it's a valid path, recursively check the subdir
+                MountDirectory(directory + entity->d_name);
             }
         }
         //Else check if file.
