@@ -8,8 +8,6 @@ FileSystem::FileSystem() {}
 
 FileSystem::~FileSystem() {}
 
-void FileSystem::Test() {}
-
 void FileSystem::MountDirectory(const std::string & directory) {
     WIN32_FIND_DATAA find_data;
 

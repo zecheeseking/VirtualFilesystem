@@ -11,8 +11,6 @@ public:
     FileSystem();
     ~FileSystem();
 
-    void Test();
-
 	  void MountDirectory(const std::string & directory);
     std::string GetPhysicalFilePath(const std::string & filename) const;
     void GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const;

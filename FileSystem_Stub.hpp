@@ -4,8 +4,6 @@ FileSystem::FileSystem() {}
 
 FileSystem::~FileSystem() {}
 
-void FileSystem::Test() {}
-
 void FileSystem::MountDirectory(const std::string & directory) {}
 
 void FileSystem::MountDirectory(const std::string & directory) {}

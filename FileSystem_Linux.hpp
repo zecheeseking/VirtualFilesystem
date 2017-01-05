@@ -7,8 +7,6 @@ FileSystem::FileSystem() {}
 
 FileSystem::~FileSystem() {}
 
-void FileSystem::Test() {}
-
 void FileSystem::MountDirectory(const std::string & directory) {
 
     std::cout << "Searching\n";
