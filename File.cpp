@@ -8,6 +8,8 @@ File::File(const std::string & physicalPath) :
 {
 }
 
+File::~File(){}
+
 bool File::Open(FileMode mode)
 {
 	//Chek if file can be opened, cache into a buffer and set flags.
