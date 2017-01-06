@@ -34,7 +34,7 @@ size_t File::Read(uint8_t * buffer, size_t length)
 size_t File::Write(const uint8_t * buffer, size_t length)
 {
 	//Copies from a different buffer
-	return fwrite(buffer, sizeof(*m_pFile), length, m_pFile);
+	return fwrite(buffer, sizeof(*buffer), length, m_pFile);
 }
 
 std::string File::GetByteIndex()
