@@ -43,41 +43,55 @@ void FileSystem::MountDirectory(const std::string & directory) {
 }
 
 std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const {
-    for (const File & f : m_Files)
-        if(f.mPhysicalPath.find(filename) != std::string::npos)
-            return f.mPhysicalPath;
+    for (const std::string & s : m_Files)
+        if(s.find(filename) != std::string::npos)
+            return s;
 
    return "";
 }
 
 void FileSystem::GetFilesInDirectory(std::vector<std::string>& fileTable, const std::string & directory)const {
-    for (const File & f : m_Files)
+    for (const std::string s f : m_Files)
     {
-        if (f.mPhysicalPath.find(directory) != std::string::npos)
-            fileTable.push_back(f.mPhysicalPath);
+        if (s.find(directory) != std::string::npos)
+            fileTable.push_back(s);
     }
 }
 
 void FileSystem::GetFilesWithExtension(std::vector<std::string>& fileTable, const std::string & extension)const {
-    for(const File & f : m_Files)
+    for(const std::string & s : m_Files)
     {
-        if(f.mPhysicalPath.find(extension) != std::string::npos)
-             fileTable.push_back(f.mPhysicalPath);
+        if(s.find(extension) != std::string::npos)
+             fileTable.push_back(s);
     }
 }
 
 std::unique_ptr<File> FileSystem::GetFile(const std::string & filename) const {
-    std::cout << "Linux GetFile() implementation needed!";
-    return nullptr;
+    for(const std::string & s : m_Files)
+        if(s.find(filename) != std::string::npos)
+            {
+                auto ptr = std::unique_ptr<File>(new File(s));
+                return ptr;
+            }
+
+    std::cout << "Could not find file!\n";
+	return nullptr;
 }
 
 std::unique_ptr<File> FileSystem::GetOutputFile(const std::string & filename) const {
-    std::cout << "Linux GetOutputFile() implementation needed!";
+    for(const std::string & s : m_Files)
+        if(s.find(filename) != std::string::npos)
+            {
+                auto ptr = std::unique_ptr<File>(new File(s));
+                return ptr;
+            }
+
+    std::cout << "Could not find output file!\n";
     return nullptr;
 }
 
 void FileSystem::LogAllFiles() const
 {
-    for(auto f : m_Files)
-        std::cout << f.mPhysicalPath << std::endl;
+    for(auto s : m_Files)
+        std::cout << s << std::endl;
 };
