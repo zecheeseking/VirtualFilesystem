@@ -1,7 +1,10 @@
 
-#include "FileSystem.h"
+
 #include <string>
 #include <iostream>
+#include <memory>
+
+#include "FileSystem.h"
 #include "File.h"
 
 int main()
@@ -24,7 +27,7 @@ int main()
   std::cout <<"finished mount.\n";
   fs.LogAllFiles();
 
-    std::vector<File> fileTable;
+    std::vector<std::string> fileTable;
 	std::string dirSearch = "";
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
 		dirSearch = "Test\\";
@@ -40,8 +43,8 @@ int main()
 	std::cout << "Files in directory" << std::endl;
 	std::cout << "**********" << std::endl;
 
-	for (auto f : fileTable)
-		std::cout << f.mPhysicalPath << std::endl;
+	for (auto s : fileTable)
+		std::cout << s << std::endl;
 
     fileTable.clear();
     std::string extension = "";
@@ -59,8 +62,8 @@ int main()
     std::cout << "Files with extension" << std::endl;
     std::cout << "**********" << std::endl;
 
-    for (auto f : fileTable)
-    	std::cout << f.mPhysicalPath << std::endl;
+    for (auto s : fileTable)
+    	std::cout << s << std::endl;
 
 	std::string fileName = "";
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
@@ -77,6 +80,11 @@ int main()
 	std::cout << "**********" << std::endl;
 	std::cout << result << std::endl;
 
+    std::unique_ptr<File> input_file = fs.GetFile("input.txt");
+    std::unique_ptr<File> output_file = fs.GetOutputFile("output.txt");
+
+    input_file->Open(FileMode::Read);
+    output_file->Open(FileMode::Write);
 
     std::cin.get();
 }

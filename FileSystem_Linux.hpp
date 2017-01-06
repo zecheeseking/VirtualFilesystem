@@ -50,7 +50,7 @@ std::string FileSystem::GetPhysicalFilePath(const std::string & filename) const 
    return "";
 }
 
-void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::string & directory)const {
+void FileSystem::GetFilesInDirectory(std::vector<std::string>& fileTable, const std::string & directory)const {
     for (const File & f : m_Files)
     {
         if (f.mPhysicalPath.find(directory) != std::string::npos)
@@ -58,12 +58,22 @@ void FileSystem::GetFilesInDirectory(std::vector<File>& fileTable, const std::st
     }
 }
 
-void FileSystem::GetFilesWithExtension(std::vector<File>& fileTable, const std::string & extension)const {
+void FileSystem::GetFilesWithExtension(std::vector<std::string>& fileTable, const std::string & extension)const {
     for(const File & f : m_Files)
     {
         if(f.mPhysicalPath.find(extension) != std::string::npos)
              fileTable.push_back(f.mPhysicalPath);
     }
+}
+
+std::unique_ptr<File> FileSystem::GetFile(const std::string & filename) const {
+    std::cout << "Linux GetFile() implementation needed!";
+    return nullptr;
+}
+
+std::unique_ptr<File> FileSystem::GetOutputFile(const std::string & filename) const {
+    std::cout << "Linux GetOutputFile() implementation needed!";
+    return nullptr;
 }
 
 void FileSystem::LogAllFiles() const

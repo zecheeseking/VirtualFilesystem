@@ -12,7 +12,7 @@ File::~File(){}
 
 bool File::Open(FileMode mode)
 {
-	//Chek if file can be opened, cache into a buffer and set flags.
+	//Check if file can be opened, cache into a buffer and set flags.
 
 	return false;
 }
@@ -36,4 +36,5 @@ std::string File::GetByteIndex()
 
 void File::Close()
 {
+	//Empty buffer
 }
