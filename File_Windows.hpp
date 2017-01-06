@@ -16,11 +16,7 @@ bool File::Open(FileMode mode)
 		m_pFile = fopen(mPhysicalPath.c_str(), "rb");
 	else if(mode == FileMode::Write)
 	{
-		#if defined(PLATFORM_WIN)
-			m_pFile = fopen(mPhysicalPath.c_str(), "wb");
-		#elseif defined(PLATFORM_LINUX)
-		m_pFile = fopen(mPhysicalPath.c_str(), "w");
-		#endif
+		m_pFile = fopen(mPhysicalPath.c_str(), "wb");
 	}
 
 	if(m_pFile == nullptr)
