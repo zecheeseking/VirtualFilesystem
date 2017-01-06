@@ -86,5 +86,20 @@ int main()
     input_file->Open(FileMode::Read);
     output_file->Open(FileMode::Write);
 
+	size_t read_byte_count, written_byte_count;
+	std::vector<uint8_t> buffer;
+
+	constexpr int buffer_size = 1024;
+	buffer.resize(buffer_size);
+
+	do {
+		read_byte_count = input_file->Read(buffer.data(), buffer.size());
+		written_byte_count = output_file->Write(buffer.data(), buffer.size());
+
+	} while (read_byte_count > 0);
+
+	input_file->Close();
+	output_file->Close();
+
     std::cin.get();
 }

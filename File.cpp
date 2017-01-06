@@ -4,7 +4,8 @@
 //WINDOWS SPECIFIC IMPLEMENTATION
 
 File::File(const std::string & physicalPath) :
-	mPhysicalPath(physicalPath)
+	mPhysicalPath(physicalPath),
+	m_pFile(nullptr)
 {
 }
 
@@ -13,20 +14,27 @@ File::~File(){}
 bool File::Open(FileMode mode)
 {
 	//Check if file can be opened, cache into a buffer and set flags.
+	if(mode == FileMode::Read)
+		m_pFile = fopen(mPhysicalPath.c_str(), "rb");
+	else if(mode == FileMode::Write)
+		m_pFile = fopen(mPhysicalPath.c_str(), "wb");
 
-	return false;
+	if(m_pFile == nullptr)
+		return false;
+
+	return true;
 }
 
-size_t File::Read(uint8_t *, size_t)
+size_t File::Read(uint8_t * buffer, size_t length)
 {
 	//Copies to a different buffer
-	return size_t();
+	return fread(buffer, sizeof(*buffer), length, m_pFile);
 }
 
-size_t File::Write(const uint8_t *, size_t)
+size_t File::Write(const uint8_t * buffer, size_t length)
 {
 	//Copies from a different buffer
-	return size_t();
+	return fwrite(buffer, sizeof(*m_pFile), length, m_pFile);
 }
 
 std::string File::GetByteIndex()
@@ -37,4 +45,6 @@ std::string File::GetByteIndex()
 void File::Close()
 {
 	//Empty buffer
+	if (m_pFile)
+		fclose(m_pFile);
 }

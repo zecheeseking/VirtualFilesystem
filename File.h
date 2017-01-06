@@ -3,6 +3,7 @@
 #include "FileMode.h"
 #include <string>
 #include <stdint.h>
+#include <stdio.h>
 #include <vector>
 
 class File
@@ -17,7 +18,8 @@ public:
 	std::string GetByteIndex();
 	void Close();
 
-	std::string mPhysicalPath;
 
 private:
+	std::string mPhysicalPath;
+	FILE* m_pFile;
 };
