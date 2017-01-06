@@ -17,7 +17,13 @@ bool File::Open(FileMode mode)
 	if(mode == FileMode::Read)
 		m_pFile = fopen(mPhysicalPath.c_str(), "rb");
 	else if(mode == FileMode::Write)
-		m_pFile = fopen(mPhysicalPath.c_str(), "wb");
+	{
+		#if defined(PLATFORM_WIN)
+			m_pFile = fopen(mPhysicalPath.c_str(), "wb");
+		#else
+		m_pFile = fopen(mPhysicalPath.c_str(), "w");
+		#endif
+	}
 
 	if(m_pFile == nullptr)
 		return false;
