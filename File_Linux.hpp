@@ -5,7 +5,7 @@
 
 File::File(const std::string & physicalPath) :
 	mPhysicalPath(physicalPath),
-	m_pFile(nullptr)
+	mFileDescriptor(0)
 {
 }
 

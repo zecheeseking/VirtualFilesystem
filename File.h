@@ -3,8 +3,11 @@
 #include "FileMode.h"
 #include <string>
 #include <stdint.h>
-#include <stdio.h>
 #include <vector>
+
+#if defined(PLATFORM_WINDOWS)
+	#include "file_windows_includes.h"
+#endif
 
 class File
 {
@@ -21,6 +24,9 @@ public:
 
 private:
 	std::string mPhysicalPath;
-	FILE* m_pFile;
-	int mFileDescriptor;
+
+	#if defined(PLATFORM_WINDOWS)
+		#include "file_windows_members.h"
+	#elif defined(PLATFORM_LINUX)
+		#include "file_linux_members.h"
 };
