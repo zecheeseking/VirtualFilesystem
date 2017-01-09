@@ -32,19 +32,19 @@ int main()
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
 		dirSearch = "Test\\";
 	#elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-		dirSearch = "Happytimes/";
+		dirSearch = "More/";
 	#else
 		std::cin >> dirSearch;
 	#endif
 
     fs.GetFilesInDirectory(fileTable, dirSearch);
 
-	printf("**********");
-	printf("Files in directory");
-	printf("**********");
+	printf("**********\n");
+	printf("Files in directory\n");
+	printf("**********\n");
 
 	for (auto s : fileTable)
-		std::cout << s << std::endl;
+    	std::cout << s << std::endl;
 
     fileTable.clear();
     std::string extension = "";
@@ -58,9 +58,9 @@ int main()
 
     fs.GetFilesWithExtension(fileTable, extension);
 
-    printf("**********");
-    printf("Files with extension");
-    printf("**********");
+    printf("**********\n");
+    printf("Files with extension\n");
+    printf("**********\n");
 
     for (auto s : fileTable)
     	std::cout << s << std::endl;
@@ -75,9 +75,9 @@ int main()
 	#endif
 
 	std::string result = fs.GetPhysicalFilePath(fileName);
-	printf("**********");
-	printf("File physical path search");
-	printf("**********");
+	printf("**********\n");
+	printf("File physical path search\n");
+	printf("**********\n");
 	printf(result.c_str());
 
     std::unique_ptr<File> input_file = fs.GetFile("input.txt");
@@ -96,8 +96,7 @@ int main()
 		read_byte_count = input_file->Read(buffer.data(), buffer.size());
 		if(read_byte_count != 0)
 			written_byte_count = output_file->Write(buffer.data(), buffer.size());
-
-	} while (read_byte_count > 0);
+	} while (read_byte_count != 0);
 
 	input_file->Close();
 	output_file->Close();
