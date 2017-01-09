@@ -22,4 +22,5 @@ public:
 private:
 	std::string mPhysicalPath;
 	FILE* m_pFile;
+	int mFileDescriptor;
 };

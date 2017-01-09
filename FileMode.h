@@ -1,8 +1,7 @@
 #pragma once
 
-enum class FileMode
+enum FileMode : unsigned char
 {
-	Read,
-	Write,
-	ReadWrite
+	Read = 0x00,
+	Write = 0x01
 };

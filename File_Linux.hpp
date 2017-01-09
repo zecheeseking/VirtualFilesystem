@@ -1,5 +1,7 @@
 #include "File.h"
 #include <string>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 File::File(const std::string & physicalPath) :
 	mPhysicalPath(physicalPath),
@@ -11,7 +13,24 @@ File::~File(){}
 
 bool File::Open(FileMode mode)
 {
-	return false;
+	int flags;
+
+	if((mode & FileMode::Write) == 0 && (mode & FileMode::Read) == 0)
+		flags = flags || O_RDWR;
+	else if((mode & FileMode::Write) == 0)
+		flags = flags || O_WRONLY;
+	else if((mode & FileMode::Read) == 0)
+		flags = flags || O_RDONLY;
+
+	mFileDescriptor = open(mPhysicalPath.c_str(), flags);
+
+	if(mFileDescriptor == -1)
+	{
+		printf("File not found!");
+		return false;
+	}
+
+	return true;
 }
 
 size_t File::Read(uint8_t * buffer, size_t length)
