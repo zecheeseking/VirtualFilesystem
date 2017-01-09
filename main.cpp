@@ -11,7 +11,7 @@ int main()
 {
     FileSystem fs;
 
-    printf("Enter mount path: \n";)
+	printf("Enter mount path: \n");
 
     std::string dir = "";
 
@@ -76,9 +76,9 @@ int main()
 
 	std::string result = fs.GetPhysicalFilePath(fileName);
 	printf("**********");
-	sprintf("File physical path search");
+	printf("File physical path search");
 	printf("**********");
-	printf(result);
+	printf(result.c_str());
 
     std::unique_ptr<File> input_file = fs.GetFile("input.txt");
     std::unique_ptr<File> output_file = fs.GetOutputFile("output.txt");
