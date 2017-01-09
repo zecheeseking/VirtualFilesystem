@@ -69,7 +69,7 @@ int main()
 	#if defined(PLATFORM_WIN) && defined(_DEBUG)
 		fileName = "test.txt";
 	#elif defined(PLATFORM_LINUX) && defined(_DEBUG)
-		fileName = "TEST1.txt";
+		fileName = "test.txt";
 	#else
 		std::cin >> fileName;
 	#endif
@@ -96,7 +96,7 @@ int main()
 		read_byte_count = input_file->Read(buffer.data(), buffer.size());
 		
 		if(read_byte_count != 0)
-			written_byte_count = output_file->Write(buffer.data(), buffer.size());
+			written_byte_count = output_file->Write(buffer.data(), read_byte_count);
 	} while (read_byte_count != 0);
 
 	input_file->Close();
