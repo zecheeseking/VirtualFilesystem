@@ -11,7 +11,7 @@ int main()
 {
     FileSystem fs;
 
-    std::cout << "Enter mount path: \n";
+    printf("Enter mount path: \n";)
 
     std::string dir = "";
 
@@ -24,7 +24,7 @@ int main()
 	#endif
 
   fs.MountDirectory(dir);
-  std::cout <<"finished mount.\n";
+  printf("finished mount.\n");
   fs.LogAllFiles();
 
     std::vector<std::string> fileTable;
@@ -39,9 +39,9 @@ int main()
 
     fs.GetFilesInDirectory(fileTable, dirSearch);
 
-	std::cout << "**********" << std::endl;
-	std::cout << "Files in directory" << std::endl;
-	std::cout << "**********" << std::endl;
+	printf("**********");
+	printf("Files in directory");
+	printf("**********");
 
 	for (auto s : fileTable)
 		std::cout << s << std::endl;
@@ -58,9 +58,9 @@ int main()
 
     fs.GetFilesWithExtension(fileTable, extension);
 
-    std::cout << "**********" << std::endl;
-    std::cout << "Files with extension" << std::endl;
-    std::cout << "**********" << std::endl;
+    printf("**********");
+    printf("Files with extension");
+    printf("**********");
 
     for (auto s : fileTable)
     	std::cout << s << std::endl;
@@ -75,10 +75,10 @@ int main()
 	#endif
 
 	std::string result = fs.GetPhysicalFilePath(fileName);
-	std::cout << "**********" << std::endl;
-	std::cout << "File physical path search" << std::endl;
-	std::cout << "**********" << std::endl;
-	std::cout << result << std::endl;
+	printf("**********");
+	sprintf("File physical path search");
+	printf("**********");
+	printf(result);
 
     std::unique_ptr<File> input_file = fs.GetFile("input.txt");
     std::unique_ptr<File> output_file = fs.GetOutputFile("output.txt");

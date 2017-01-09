@@ -26,7 +26,7 @@ bool File::Open(FileMode mode)
 
 	if(mFileDescriptor == -1)
 	{
-		printf("File not found!");
+		printf("File::Open> File not found!");
 		return false;
 	}
 

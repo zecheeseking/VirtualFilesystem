@@ -20,7 +20,10 @@ bool File::Open(FileMode mode)
 	}
 
 	if(m_pFile == nullptr)
+	{
+		printf("File::Open> File not found!");
 		return false;
+	}
 
 	return true;
 }

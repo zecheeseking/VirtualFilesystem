@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <vector>
 
-#if defined(PLATFORM_WINDOWS)
+#if defined(PLATFORM_WIN)
 	#include "file_windows_includes.h"
 #endif
 
@@ -25,8 +25,9 @@ public:
 private:
 	std::string mPhysicalPath;
 
-	#if defined(PLATFORM_WINDOWS)
+	#if defined(PLATFORM_WIN)
 		#include "file_windows_members.h"
 	#elif defined(PLATFORM_LINUX)
 		#include "file_linux_members.h"
+	#endif
 };
