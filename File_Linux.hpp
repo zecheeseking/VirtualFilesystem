@@ -21,7 +21,7 @@ bool File::Open(FileMode mode)
 	else if(mode == FileMode::Write)
 		mFileDescriptor = open(mPhysicalPath.c_str(), O_WRONLY);
 	else if(mode == FileMode::Read)
-		flags = flags || O_RDONLY;
+		mFileDescriptor = open(mPhysicalPath.c_str(), O_RDONLY);
 
 
 	if(mFileDescriptor == -1)
