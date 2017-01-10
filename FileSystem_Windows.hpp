@@ -38,13 +38,13 @@ void FileSystem::MountDirectory(const std::string & directory) {
     		}
     		else
     		{
-    			if (strcmp(find_data.cFileName, ".") == 0
-    				|| strcmp(find_data.cFileName, "..") == 0)
-    			{
-    				continue;
-    			}
-    			else
-    				m_Files.push_back(directory + find_data.cFileName);
+				if (strcmp(find_data.cFileName, ".") == 0
+					|| strcmp(find_data.cFileName, "..") == 0)
+				{
+					continue;
+				}
+				else
+					m_Files.insert(directory + find_data.cFileName);
     		}
     	}while (FindNextFileA(handle, &find_data) != 0);
 

@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include <vector>
+#include <set>
 #include <memory>
 
 #include "File.h"
@@ -25,7 +25,7 @@ public:
 
 private:
 
-    std::vector<std::string> m_Files;
+    std::set<std::string> m_Files;
 
     FileSystem(const FileSystem & fileSystem) {};
     FileSystem& operator=(const FileSystem & fileSystem){};

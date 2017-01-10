@@ -33,7 +33,7 @@ void FileSystem::MountDirectory(const std::string & directory) {
         //Else check if file.
         else if(entity->d_type == DT_REG)
         {
-            m_Files.push_back(directory + entity->d_name);
+            m_Files.insert(directory + entity->d_name);
         }
 
         entity = readdir(dir);
