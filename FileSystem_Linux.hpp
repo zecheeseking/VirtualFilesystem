@@ -9,7 +9,6 @@ FileSystem::~FileSystem() {}
 
 void FileSystem::MountDirectory(const std::string & directory) {
 
-    std::cout << "Searching\n";
     auto dir = opendir(directory.c_str());
 
     if(dir == NULL){
