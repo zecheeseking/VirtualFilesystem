@@ -91,14 +91,14 @@
 //
 // constexpr int buffer_size = 1024;
 // buffer.resize(buffer_size);
-//
+
 // do {
 //     read_byte_count = input_file->Read(buffer.data(), buffer.size());
-//
+
 //     if(read_byte_count != 0)
 //         written_byte_count = output_file->Write(buffer.data(), read_byte_count);
 // } while (read_byte_count != 0);
-//
+
 // input_file->Close();
 // output_file->Close();
 
@@ -135,7 +135,7 @@ public:
 			#else
 				fs.GetFilesInDirectory(fileTable, dirSearch);
 			#endif
-			
+
 			for (auto s : fileTable)
 				std::cout << s << std::endl;
 		};
@@ -150,7 +150,7 @@ public:
 			#else
 				fs.GetFilesWithExtension(fileTable, extension);
 			#endif
-			
+
 			for (auto s : fileTable)
 				std::cout << s << std::endl;
 		};
@@ -158,6 +158,34 @@ public:
 		auto searchPath = [&fs](const std::string & file) {
 			std::string result = fs.GetPhysicalFilePath(file);
 			printf(result.c_str() + '\n');
+		};
+
+        auto copy = [&fs](const std::string & files) {
+            auto splitIndex = files.find(' ');
+            auto inputFile = files.substr(0, splitIndex);
+            auto outputFile = files.substr(splitIndex + 1, files.size() - 1 - splitIndex);
+			
+			std::unique_ptr<File> input_file = fs.GetFile("input.txt");
+			std::unique_ptr<File> output_file = fs.GetOutputFile("output.txt");
+
+			 input_file->Open(FileMode::Read);
+			 output_file->Open(FileMode::Write);
+			
+			 size_t read_byte_count, written_byte_count;
+			 std::vector<uint8_t> buffer;
+			
+			 constexpr int buffer_size = 1024;
+			 buffer.resize(buffer_size);
+
+			 do {
+			     read_byte_count = input_file->Read(buffer.data(), buffer.size());
+
+			     if(read_byte_count != 0)
+			         written_byte_count = output_file->Write(buffer.data(), read_byte_count);
+			 } while (read_byte_count != 0);
+
+			 input_file->Close();
+			 output_file->Close();
 		};
 
         auto exit = [&end](const std::string & path){
@@ -168,6 +196,7 @@ public:
 		m_Commands["searchdir"] = searchDir;
 		m_Commands["searchext"] = searchExt;
 		m_Commands["searchpath"] = searchPath;
+        m_Commands["copy"] = copy;
 
         m_Commands["exit"] = exit;
     }
