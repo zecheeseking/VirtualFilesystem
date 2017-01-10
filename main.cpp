@@ -157,23 +157,23 @@ public:
 
 		auto searchPath = [&fs](const std::string & file) {
 			std::string result = fs.GetPhysicalFilePath(file);
-			printf(result.c_str() + '\n');
+			std::cout << result << std::endl;
 		};
 
         auto copy = [&fs](const std::string & files) {
             auto splitIndex = files.find(' ');
             auto inputFile = files.substr(0, splitIndex);
             auto outputFile = files.substr(splitIndex + 1, files.size() - 1 - splitIndex);
-			
+
 			std::unique_ptr<File> input_file = fs.GetFile("input.txt");
 			std::unique_ptr<File> output_file = fs.GetOutputFile("output.txt");
 
 			 input_file->Open(FileMode::Read);
 			 output_file->Open(FileMode::Write);
-			
+
 			 size_t read_byte_count, written_byte_count;
 			 std::vector<uint8_t> buffer;
-			
+
 			 constexpr int buffer_size = 1024;
 			 buffer.resize(buffer_size);
 
@@ -188,6 +188,16 @@ public:
 			 output_file->Close();
 		};
 
+        auto help = [](const std::string & path){
+            std::cout << "List of commands: \n\n" <<
+            "mount <path>:			 mounts <path> to virtual file system\n" <<
+            "searchdir <path>:		 returns list of files in <path> directory\n" <<
+            "searchext <ext>:		 return list of files with <ext> extension\n" <<
+            "searchpath <file>:		 returns physical path of <file>\n" <<
+            "copy <input> <output>:	 copies contents of <input> to <output>\n" <<
+            "exit:					 exits the program\n\n";
+        };
+
         auto exit = [&end](const std::string & path){
 			end = true;
 		};
@@ -197,7 +207,7 @@ public:
 		m_Commands["searchext"] = searchExt;
 		m_Commands["searchpath"] = searchPath;
         m_Commands["copy"] = copy;
-
+        m_Commands["help"] = help;
         m_Commands["exit"] = exit;
     }
 
@@ -211,7 +221,7 @@ public:
 		if (cmd != m_Commands.end())
 			cmd->second(input);
 		else
-			printf("FileSystemIO::Execute> Unrecognized command.");
+			printf("FileSystemIO::Execute> Unrecognized command. Use help command for list of commands.");
     }
 
 	void PrintFileTableVector(){
